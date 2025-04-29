@@ -1,2 +1,1 @@
-PS C:\Users\Microsoft\Desktop\ISCTE\Semestre 2\Blockchain\projeto\p2p-energy\backend> npx hardhat run scripts/deploy.js --network sepolia
 EnergyMarketplace deployed to: 0x62884Eabf159ff5D42711Bb6Ff5B2c2AC3887AE8
