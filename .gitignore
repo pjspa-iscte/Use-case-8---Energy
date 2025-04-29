@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Hardhat build folders
+artifacts/
+cache/
+
+# Vite build
+dist/
+
+# Env files
+.env
+
+# IDEs e SO
+.vscode/
+.DS_Store
