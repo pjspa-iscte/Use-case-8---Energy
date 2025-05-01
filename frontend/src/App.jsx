@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getContract } from "./hooks/useContract";
 import CreateOffer from "./components/CreateOffer";
 import OfferList from "./components/OfferList";
-
+import "./App.css";
 function App() {
   useEffect(() => {
     const connect = async () => {
@@ -24,10 +24,10 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>⚡ P2P Energy DApp</h1>
-      <CreateOffer />
-      <OfferList />
+    <div className="app-container">
+          <h1 className="app-title">⚡ P2P Energy DApp</h1>
+          <CreateOffer />
+          <OfferList />
     </div>
   );
 }

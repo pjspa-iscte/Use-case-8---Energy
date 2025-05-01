@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getContract } from "../hooks/useContract";
 import { ethers } from "ethers";
+import "./OfferList.css";
 
 function OfferList() {
   const [offers, setOffers] = useState([]);
@@ -10,6 +11,11 @@ function OfferList() {
   const fetchOffers = async () => {
     try {
       const contract = await getContract();
+      if (!contract) {
+        setStatus("❌ MetaMask não detetada ou não autorizada.");
+        return;
+      }
+
       const total = await contract.getOffersCount();
       const offersArray = [];
 
@@ -29,6 +35,7 @@ function OfferList() {
       setOffers(offersArray);
     } catch (error) {
       console.error("Erro ao buscar ofertas:", error);
+      setStatus("❌ Erro ao buscar ofertas.");
     }
   };
 
@@ -40,6 +47,11 @@ function OfferList() {
   const buyEnergy = async (id, priceWei) => {
     try {
       const contract = await getContract();
+      if (!contract) {
+        setStatus("❌ MetaMask não detetada ou não autorizada.");
+        return;
+      }
+
       const tx = await contract.buyEnergy(id, { value: priceWei });
       setStatus("⏳ Aguardando confirmação da transação...");
       await tx.wait();
@@ -52,25 +64,25 @@ function OfferList() {
   };
 
   return (
-    <div>
-      <h2>Ofertas Disponíveis</h2>
+    <div className="offers-container">
+      <h2 className="offers-title">Ofertas Disponíveis</h2>
       {offers.length === 0 ? (
-        <p>🚫 Nenhuma oferta ativa encontrada.</p>
+        <p className="no-offers">🚫 Nenhuma oferta ativa encontrada.</p>
       ) : (
-        <ul>
+        <ul className="offers-list">
           {offers.map((offer, index) => (
-            <li key={index}>
-              <strong>Vendedor:</strong> {offer.seller} <br />
-              <strong>Quantidade:</strong> {String(offer.amountKWh)} kWh <br />
-              <strong>Preço:</strong>{" "}
-              {offer.priceWei ? ethers.formatEther(offer.priceWei) : "0"} ETH <br />
-              <button onClick={() => buyEnergy(offer.id, offer.priceWei)}>Comprar</button>
-              <hr />
+            <li key={index} className="offer-item">
+              <p><strong>Vendedor:</strong> {offer.seller}</p>
+              <p><strong>Quantidade:</strong> {String(offer.amountKWh)} kWh</p>
+              <p><strong>Preço:</strong> {ethers.formatEther(offer.priceWei)} ETH</p>
+              <button className="buy-button" onClick={() => buyEnergy(offer.id, offer.priceWei)}>
+                Comprar
+              </button>
             </li>
           ))}
         </ul>
       )}
-      <p>{status}</p>
+      <p className="status-message">{status}</p>
     </div>
   );
 }
