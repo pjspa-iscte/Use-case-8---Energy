@@ -3,15 +3,16 @@
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 12px;
-  background: linear-gradient(135deg, #2d84b6, #145daf);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #5a9edc, #2e77ca);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", sans-serif;
+  color: #fff;
 }
 
 .form-title {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #ffffff;
 }
 
 .offer-form {
@@ -26,44 +27,47 @@
 }
 
 .form-group label {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
-  color: #444;
+  color: #eaf4ff;
 }
 
 .form-group input {
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  border: 1px solid #aacbef;
   border-radius: 6px;
-  background-color: #7db1d8;
+  background-color: #e9f2fb;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s;
+  color: #1e1e1e;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #3a8dde;
+  background-color: #f7fbff;
 }
 
 .submit-button {
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #145daf;
+  color: #ffffff;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #0e4b91;
+  transform: scale(1.02);
 }
 
 .status-message {
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
-  color: #444;
+  color: #fffbe7;
 }
